@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Tipo de Empleo por Género en Latinoamérica</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Empleo y Género</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="grafico-mapa.html">Disponibilidad de Indicadores</a>
+</li>
+<li>
+  <a href="grafico-tipoempleo.html">Tipo de Empleo y Género</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Tipo de Empleo por Género en Latinoamérica</h1>
+
+</div>
+
+
+<p>Entre la década de 1990 y la de 2010 ocurrieron procesos importantes de tecnificación en el agro, así como también como desarticulación de cierto entramado industrial. Es esperable que dentro de los paises en los que ocurrió más fuertemente estos fenómenos detectemos una disminución de la mano de obra agrícola e industrial respectivamente.</p>
+<div id="latinoamérica-en-general" class="section level1">
+<h1>Latinoamérica en general</h1>
+<p>Inicialmente, hacemos una mirada general de los indicadores para Latinoamérica, en términos generales. Analizamos el tipo de empleo discriminado por género.</p>
+<p><img src="grafico-tipoempleo_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Como podemos ver se verifica la caída de la participación en la agricultura (total 40% en mujeres y 35% en varones). En cuanto a la industria la participación de las mujeres disminuyó un 26% mientras que la participación de los varones se mantuvo estable e incluso subió unas décimas porcentuales.</p>
+<p>Por último, nos encontramos con un importante incremento en la participación en el rubro de servicios. Mientras que un 70,9% de las mujeres se dedicaban a este rubro en 1991, para 2018 lo hacía el 80,48%. Por el lado de los varones el indicador pasó de 44,97% a 54,43% respectivamente.</p>
+</div>
+<div id="mujeres-y-varones-por-tipo-de-empleo" class="section level1">
+<h1>Mujeres y varones por tipo de empleo</h1>
+<p>Para observar con más detalles estos movimientos abrimos el análisis para poder mirar país por país</p>
+<p><img src="grafico-tipoempleo_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="grafico-tipoempleo_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p>En cuanto a la agricultura podemos apreciar una baja sustantiva en la participación, destacándose en países como Bolivia, Brasil, Paraguay o Panamá. En países como Honduras o Panamá la baja dentro de los varones fue más significativa.</p>
+<p>Respecto a la industria, apreciamos cierto incremento dentro de los varones de países como Bolivia, Paraguay o México. Por el contrario, las mujeres de Argentina, República Dominicana, Costa Rica o Colombia redujeron sensiblemente su participación.</p>
+<p>Dentro del rubro de los servicios observamos un ascenso generalizado, destacándose Bolivia, Brasil, Cuba y República Dominicana.</p>
+</div>
+<div id="distribución-dentro-de-cada-género" class="section level1">
+<h1>Distribución dentro de cada género</h1>
+<p>Realizamos una visualización alternativa que es ver la evolución de la distribución dentro de cada género para cada país</p>
+<p><img src="grafico-tipoempleo_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="grafico-tipoempleo_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>Aquí podemos ver más nítidamente las estructuras de cada país. Tenemos países muy disímiles, podemos comparar a Argentina, donde el empleo agrario es prácticamente nulo con Haití, donde sigue siendo la ocupación más importante.</p>
+<p>También en Bolivia, Guatemala, Nicaragua o Paraguay el empleo rural sigue siendo muy significativo.</p>
+<p>En cuanto a la industria, Argentina, Brasil, Chile y México siguen manteniendo una contribución alta de la mano de obra, sobre todo dentro de la población masculina.</p>
+<p>Por el rubro de los servicios encontramos una alta participación de las mujeres en casi todos los países. Se destacan Argentina, Costa Rica, Uruguay y Venezuela, por dar solo unos ejemplos.</p>
+<p>Cabe señalar que dentro de la categoría de servicios se encuentra todo tipo de ocupación, desde quienes trabajan en empresas de tecnología hasta quienes se desempeñan dentro de trabajos mucho más precarios.</p>
+</div>
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRpcG8gZGUgRW1wbGVvIHBvciBHw6luZXJvIGVuIExhdGlub2Ftw6lyaWNhIg0Kb3V0cHV0OiANCiAgaHRtbF9kb2N1bWVudDoNCiAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2Zsb2F0OiB0cnVlDQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpDQpzb3VyY2UoJ2FuYWxpc2lzL2FuYWxpc2lzX2RhdGFzZXQuUicsIGVuY29kaW5nID0gJ1VURi04JywgZWNobz1UUlVFKQ0Kc291cmNlKCdhbmFsaXNpcy9ncmFmaWNvX3RpcG9fZW1wbGVvLlInLCBlbmNvZGluZyA9ICdVVEYtOCcsIGVjaG89VFJVRSkNCg0KYGBgDQoNCkVudHJlIGxhIGTDqWNhZGEgZGUgMTk5MCB5IGxhIGRlIDIwMTAgb2N1cnJpZXJvbiBwcm9jZXNvcyBpbXBvcnRhbnRlcyBkZSB0ZWNuaWZpY2FjacOzbiBlbiBlbCBhZ3JvLCBhc8OtIGNvbW8gdGFtYmnDqW4gY29tbyBkZXNhcnRpY3VsYWNpw7NuIGRlIGNpZXJ0byBlbnRyYW1hZG8gaW5kdXN0cmlhbC4gRXMgZXNwZXJhYmxlIHF1ZSBkZW50cm8gZGUgbG9zIHBhaXNlcyBlbiBsb3MgcXVlIG9jdXJyacOzIG3DoXMgZnVlcnRlbWVudGUgZXN0b3MgZmVuw7NtZW5vcyBkZXRlY3RlbW9zIHVuYSBkaXNtaW51Y2nDs24gZGUgbGEgbWFubyBkZSBvYnJhIGFncsOtY29sYSBlIGluZHVzdHJpYWwgcmVzcGVjdGl2YW1lbnRlLg0KDQojIExhdGlub2Ftw6lyaWNhIGVuIGdlbmVyYWwNCg0KSW5pY2lhbG1lbnRlLCBoYWNlbW9zIHVuYSBtaXJhZGEgZ2VuZXJhbCBkZSBsb3MgaW5kaWNhZG9yZXMgcGFyYSBMYXRpbm9hbcOpcmljYSwgZW4gdMOpcm1pbm9zIGdlbmVyYWxlcy4gQW5hbGl6YW1vcyBlbCB0aXBvIGRlIGVtcGxlbyBkaXNjcmltaW5hZG8gcG9yIGfDqW5lcm8uDQoNCmBgYHtyIGVjaG89RkFMU0UsIHdhcm5pbmc9RkFMU0V9DQpwcmludChncmFmaWNvX3RpcG9fZW1wbGVvX2FuaW9fbGF0YW0pDQoNCmBgYA0KDQpDb21vIHBvZGVtb3MgdmVyIHNlIHZlcmlmaWNhIGxhIGNhw61kYSBkZSBsYSBwYXJ0aWNpcGFjacOzbiBlbiBsYSBhZ3JpY3VsdHVyYSAodG90YWwgNDAlIGVuIG11amVyZXMgeSAzNSUgZW4gdmFyb25lcykuIEVuIGN1YW50byBhIGxhIGluZHVzdHJpYSBsYSBwYXJ0aWNpcGFjacOzbiBkZSBsYXMgbXVqZXJlcyBkaXNtaW51ecOzIHVuIDI2JSBtaWVudHJhcyBxdWUgbGEgcGFydGljaXBhY2nDs24gZGUgbG9zIHZhcm9uZXMgc2UgbWFudHV2byBlc3RhYmxlIGUgaW5jbHVzbyBzdWJpw7MgdW5hcyBkw6ljaW1hcyBwb3JjZW50dWFsZXMuIA0KDQpQb3Igw7psdGltbywgbm9zIGVuY29udHJhbW9zIGNvbiB1biBpbXBvcnRhbnRlIGluY3JlbWVudG8gZW4gbGEgcGFydGljaXBhY2nDs24gZW4gZWwgcnVicm8gZGUgc2VydmljaW9zLiBNaWVudHJhcyBxdWUgdW4gNzAsOSUgZGUgbGFzIG11amVyZXMgc2UgZGVkaWNhYmFuIGEgZXN0ZSBydWJybyBlbiAxOTkxLCBwYXJhIDIwMTggbG8gaGFjw61hIGVsIDgwLDQ4JS4gUG9yIGVsIGxhZG8gZGUgbG9zIHZhcm9uZXMgZWwgaW5kaWNhZG9yIHBhc8OzIGRlIDQ0LDk3JSBhIDU0LDQzJSByZXNwZWN0aXZhbWVudGUuDQoNCg0KIyBNdWplcmVzIHkgdmFyb25lcyBwb3IgdGlwbyBkZSBlbXBsZW8NCg0KUGFyYSBvYnNlcnZhciBjb24gbcOhcyBkZXRhbGxlcyBlc3RvcyBtb3ZpbWllbnRvcyBhYnJpbW9zIGVsIGFuw6FsaXNpcyBwYXJhIHBvZGVyIG1pcmFyIHBhw61zIHBvciBwYcOtcw0KDQoNCmBgYHtyIGVjaG89RkFMU0UsIHdhcm5pbmc9RkFMU0V9DQpwcmludChncmFmaWNvX3RpcG9fZW1wbGVvX2FuaW9fcGFpc18xKQ0KcHJpbnQoZ3JhZmljb190aXBvX2VtcGxlb19hbmlvX3BhaXNfMikNCmBgYA0KDQoNCkVuIGN1YW50byBhIGxhIGFncmljdWx0dXJhIHBvZGVtb3MgYXByZWNpYXIgdW5hIGJhamEgc3VzdGFudGl2YSBlbiBsYSBwYXJ0aWNpcGFjacOzbiwgZGVzdGFjw6FuZG9zZSBlbiBwYcOtc2VzIGNvbW8gQm9saXZpYSwgQnJhc2lsLCBQYXJhZ3VheSBvIFBhbmFtw6EuIEVuIHBhw61zZXMgY29tbyBIb25kdXJhcyBvIFBhbmFtw6EgbGEgYmFqYSBkZW50cm8gZGUgbG9zIHZhcm9uZXMgZnVlIG3DoXMgc2lnbmlmaWNhdGl2YS4NCg0KUmVzcGVjdG8gYSBsYSBpbmR1c3RyaWEsIGFwcmVjaWFtb3MgY2llcnRvIGluY3JlbWVudG8gZGVudHJvIGRlIGxvcyB2YXJvbmVzIGRlIHBhw61zZXMgY29tbyBCb2xpdmlhLCBQYXJhZ3VheSBvIE3DqXhpY28uIFBvciBlbCBjb250cmFyaW8sIGxhcyBtdWplcmVzIGRlIEFyZ2VudGluYSwgUmVww7pibGljYSBEb21pbmljYW5hLCBDb3N0YSBSaWNhIG8gQ29sb21iaWEgcmVkdWplcm9uIHNlbnNpYmxlbWVudGUgc3UgcGFydGljaXBhY2nDs24uDQoNCkRlbnRybyBkZWwgcnVicm8gZGUgbG9zIHNlcnZpY2lvcyBvYnNlcnZhbW9zIHVuIGFzY2Vuc28gZ2VuZXJhbGl6YWRvLCBkZXN0YWPDoW5kb3NlIEJvbGl2aWEsIEJyYXNpbCwgQ3ViYSB5IFJlcMO6YmxpY2EgRG9taW5pY2FuYS4NCg0KDQojIERpc3RyaWJ1Y2nDs24gZGVudHJvIGRlIGNhZGEgZ8OpbmVybw0KDQpSZWFsaXphbW9zIHVuYSB2aXN1YWxpemFjacOzbiBhbHRlcm5hdGl2YSBxdWUgZXMgdmVyIGxhIGV2b2x1Y2nDs24gZGUgbGEgZGlzdHJpYnVjacOzbiBkZW50cm8gZGUgY2FkYSBnw6luZXJvIHBhcmEgY2FkYSBwYcOtcw0KDQpgYGB7ciBlY2hvPUZBTFNFLCB3YXJuaW5nPUZBTFNFfQ0KcHJpbnQoZ3JhZmljb19wYXJ0aWNpcGFjaW9uXzEpDQpwcmludChncmFmaWNvX3BhcnRpY2lwYWNpb25fMikNCg0KYGBgDQoNCkFxdcOtIHBvZGVtb3MgdmVyIG3DoXMgbsOtdGlkYW1lbnRlIGxhcyBlc3RydWN0dXJhcyBkZSBjYWRhIHBhw61zLiBUZW5lbW9zIHBhw61zZXMgbXV5IGRpc8OtbWlsZXMsIHBvZGVtb3MgY29tcGFyYXIgYSBBcmdlbnRpbmEsIGRvbmRlIGVsIGVtcGxlbyBhZ3JhcmlvIGVzIHByw6FjdGljYW1lbnRlIG51bG8gY29uIEhhaXTDrSwgZG9uZGUgc2lndWUgc2llbmRvIGxhIG9jdXBhY2nDs24gbcOhcyBpbXBvcnRhbnRlLg0KDQpUYW1iacOpbiBlbiBCb2xpdmlhLCBHdWF0ZW1hbGEsIE5pY2FyYWd1YSBvIFBhcmFndWF5IGVsIGVtcGxlbyBydXJhbCBzaWd1ZSBzaWVuZG8gbXV5IHNpZ25pZmljYXRpdm8uIA0KDQpFbiBjdWFudG8gYSBsYSBpbmR1c3RyaWEsIEFyZ2VudGluYSwgQnJhc2lsLCBDaGlsZSB5IE3DqXhpY28gc2lndWVuIG1hbnRlbmllbmRvIHVuYSBjb250cmlidWNpw7NuIGFsdGEgZGUgbGEgbWFubyBkZSBvYnJhLCBzb2JyZSB0b2RvIGRlbnRybyBkZSBsYSBwb2JsYWNpw7NuIG1hc2N1bGluYS4NCg0KUG9yIGVsIHJ1YnJvIGRlIGxvcyBzZXJ2aWNpb3MgZW5jb250cmFtb3MgdW5hIGFsdGEgcGFydGljaXBhY2nDs24gZGUgbGFzIG11amVyZXMgZW4gY2FzaSB0b2RvcyBsb3MgcGHDrXNlcy4gU2UgZGVzdGFjYW4gQXJnZW50aW5hLCBDb3N0YSBSaWNhLCBVcnVndWF5IHkgVmVuZXp1ZWxhLCBwb3IgZGFyIHNvbG8gdW5vcyBlamVtcGxvcy4gDQoNCkNhYmUgc2XDsWFsYXIgcXVlIGRlbnRybyBkZSBsYSBjYXRlZ29yw61hIGRlIHNlcnZpY2lvcyBzZSBlbmN1ZW50cmEgdG9kbyB0aXBvIGRlIG9jdXBhY2nDs24sIGRlc2RlIHF1aWVuZXMgdHJhYmFqYW4gZW4gZW1wcmVzYXMgZGUgdGVjbm9sb2fDrWEgaGFzdGEgcXVpZW5lcyBzZSBkZXNlbXBlw7FhbiBkZW50cm8gZGUgdHJhYmFqb3MgbXVjaG8gbcOhcyBwcmVjYXJpb3MuDQoNCg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("grafico-tipoempleo.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

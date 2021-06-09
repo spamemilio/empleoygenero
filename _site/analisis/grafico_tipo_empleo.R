@@ -1,0 +1,126 @@
+library(tidyverse)
+
+# Agrupamos el Tipo de Empleo por país discriminado por género
+  tipo_empleo_anio_pais <-  na.omit(datos_ordenados) %>%
+  filter(year>=1991) %>% 
+  filter(variable %in% c("empleo_agricultura_mujeres",
+                         "empleo_agricultura_hombres",
+                         "empleo_industria_mujeres",
+                         "empleo_industria_hombres",
+                         "empleo_servicios_mujeres",
+                         "empleo_servicios_hombres")) %>% 
+  filter(!codigo_pais_region %in% c("LCN","ESP","WLD")) %>% 
+  mutate(genero = ifelse(str_detect(variable,'mujeres'),'mujeres','varones'),
+         tipo_empleo = str_extract(variable,'_[a-z]*')
+         ) %>% 
+  mutate(tipo_empleo = str_sub(tipo_empleo, start = 2)) 
+  
+  tipo_empleo_anio_latam_eje_x <- tipo_empleo_anio_pais %>% 
+    filter(year %in% c(1991,2018)) %>% 
+    mutate(valor = round(valor,2) )
+  
+  theme_latam_1 <- 
+  theme( plot.title.position = "plot",
+         panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80")
+         , panel.grid.minor = element_blank(),  legend.position = c(0.87,1.15),
+         legend.direction = "horizontal",
+         legend.title = element_text(size = 9, face="bold"),
+         axis.text.x = element_text(size = 7),
+         strip.text.x = element_text(size = 6,face="bold"),
+         strip.background = element_rect(color="black", fill="#FFE599", size=0.5, linetype="solid"))  
+  
+theme_latam_2 <- theme( plot.title.position = "plot",
+         panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80"),
+         panel.grid.minor = element_blank(),
+         legend.position = "none",
+         axis.text.x = element_text(size = 7),
+         strip.text.x = element_text(size = 7),
+         strip.background = element_rect(color="black", fill="#FFE599", size=0.4, linetype="solid"))
+  
+  grafico_tipo_empleo_anio_pais_1 <- 
+  paises_codigos %>% 
+    filter(row_number()<=10) %>% 
+    left_join(tipo_empleo_anio_pais) %>% 
+  ggplot(aes(x=year,y=valor))+
+  geom_line(aes(color=genero),size=1)+
+  facet_grid(tipo_empleo ~ pais_region)+
+    labs(x ="Año", y = "Porcentaje por tipo de empleo", title = "Evolución de la participación en el empleo en Latinoamérica",
+     subtitle = "Desagregado por país y tipo de empleo según género (1991-2018)",
+     color ="Género" )+
+    scale_x_discrete(limit = c(1991, 2010))+
+    theme_latam_1
+  
+  grafico_tipo_empleo_anio_pais_2 <- 
+    paises_codigos %>% 
+    filter(row_number()>10) %>% 
+    left_join(tipo_empleo_anio_pais) %>% 
+    mutate(pais_region = ifelse(pais_region == "República Dominicana", "Dominicana", pais_region)) %>% 
+    ggplot(aes(x=year,y=valor))+
+    geom_line(aes(color=genero),size=1)+
+    facet_grid(tipo_empleo ~ pais_region, shrink = TRUE)+
+    labs(x ="Año", y = "Porcentaje por tipo de empleo", title = element_blank() )+
+    expand_limits(y=c(0.0, 50.0)) +
+    scale_x_discrete(limit = c(1991,  2010))+
+    theme_latam_2
+  
+  grafico_participacion_1 <- 
+    paises_codigos %>% 
+    filter(row_number()<=10) %>% 
+    left_join(tipo_empleo_anio_pais) %>% 
+    ggplot(aes(x=year,y=valor), )+
+    theme_bw()+
+    geom_area(aes(fill=tipo_empleo))+
+    facet_grid(genero ~ pais_region)+
+    labs(x ="Año", y = "Porcentaje por tipo de empleo", title = "Distribución del empleo en Latinoamérica",
+         subtitle = "Distribución por país y tipo de empleo según género (1991-2018)",
+         fill ="Tipo de Empleo" )+
+    scale_x_discrete(limit = c(1991, 2010))  +
+    theme_latam_1+
+  theme(legend.title = element_text(size = 7, face="bold"))
+  
+  grafico_participacion_2 <- 
+  paises_codigos %>% 
+    filter(row_number()>=10) %>% 
+    left_join(tipo_empleo_anio_pais) %>% 
+    mutate(pais_region = ifelse(pais_region == "República Dominicana", "Dominicana", pais_region)) %>% 
+    ggplot(aes(x=year,y=valor), )+
+    theme_bw()+
+    geom_area(aes(fill=tipo_empleo))+
+    facet_grid(genero ~ pais_region)+
+    labs(x ="Año", y = "Porcentaje por tipo de empleo")+
+    scale_x_discrete(limit = c(1991, 2010))  +
+    theme_latam_2
+  
+
+  grafico_tipo_empleo_anio_latam <-  tipo_empleo_anio_latam <-  na.omit(datos_ordenados) %>%
+  filter(year>=1991) %>% 
+  filter(variable %in% c("empleo_agricultura_mujeres",
+                         "empleo_agricultura_hombres",
+                         "empleo_industria_mujeres",
+                         "empleo_industria_hombres",
+                         "empleo_servicios_mujeres",
+                         "empleo_servicios_hombres")) %>% 
+  filter(codigo_pais_region %in% c("LCN")) %>% 
+  mutate(genero = ifelse(str_detect(variable,'mujeres'),'mujeres','varones'),
+         tipo_empleo = str_extract(variable,'_[a-z]*')
+  ) %>% 
+  mutate(tipo_empleo = str_sub(tipo_empleo, start = 2))
+
+tipo_empleo_anio_latam_etiquetas <- tipo_empleo_anio_latam %>% 
+  filter(year %in% c(1991,2001,2011,2018)) %>% 
+  mutate(valor = round(valor,2) )
+
+grafico_tipo_empleo_anio_latam <- tipo_empleo_anio_latam %>% 
+ggplot( aes(x=year,y=valor))+
+  theme_bw()+
+  geom_line(color="#0a7d3c", size = 1.5)+
+  facet_grid(tipo_empleo ~ genero, margins = c(5,5))+
+  theme( plot.title.position = "plot",
+    panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80")
+        , panel.grid.minor = element_blank(),  legend.position = c(0.9,0.15),
+        legend.title = element_text(size = 10),
+        strip.text.x = element_text(size = 12,face="bold"),
+        strip.background = element_rect(color="black", fill="#FFE599", size=0.5, linetype="solid"))+
+  geom_text( data=tipo_empleo_anio_latam_etiquetas, aes(label = valor), size = 2, vjust = -0.5, position =  "stack")+
+  labs(x ="Año", y = "Porcentaje por tipo de empleo", title = "Evolución de la participación en el empleo en Latinoamérica",
+       subtitle = "Discriminado por género y tipo de empleo (1991-2018)") 
