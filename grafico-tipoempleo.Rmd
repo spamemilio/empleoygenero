@@ -1,0 +1,70 @@
+---
+title: "Tipo de Empleo por Género en Latinoamérica"
+output: 
+  html_document:
+    code_download: true
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source('analisis/analisis_dataset.R', encoding = 'UTF-8', echo=TRUE)
+source('analisis/grafico_tipo_empleo.R', encoding = 'UTF-8', echo=TRUE)
+
+```
+
+Entre la década de 1990 y la de 2010 ocurrieron procesos importantes de tecnificación en el agro, así como también como desarticulación de cierto entramado industrial. Es esperable que dentro de los paises en los que ocurrió más fuertemente estos fenómenos detectemos una disminución de la mano de obra agrícola e industrial respectivamente.
+
+# Latinoamérica en general
+
+Inicialmente, hacemos una mirada general de los indicadores para Latinoamérica, en términos generales. Analizamos el tipo de empleo discriminado por género.
+
+```{r echo=FALSE, warning=FALSE}
+print(grafico_tipo_empleo_anio_latam)
+
+```
+
+Como podemos ver se verifica la caída de la participación en la agricultura (total 40% en mujeres y 35% en varones). En cuanto a la industria la participación de las mujeres disminuyó un 26% mientras que la participación de los varones se mantuvo estable e incluso subió unas décimas porcentuales. 
+
+Por último, nos encontramos con un importante incremento en la participación en el rubro de servicios. Mientras que un 70,9% de las mujeres se dedicaban a este rubro en 1991, para 2018 lo hacía el 80,48%. Por el lado de los varones el indicador pasó de 44,97% a 54,43% respectivamente.
+
+
+# Mujeres y varones por tipo de empleo
+
+Para observar con más detalles estos movimientos abrimos el análisis para poder mirar país por país
+
+
+```{r echo=FALSE, warning=FALSE}
+print(grafico_tipo_empleo_anio_pais_1)
+print(grafico_tipo_empleo_anio_pais_2)
+```
+
+
+En cuanto a la agricultura podemos apreciar una baja sustantiva en la participación, destacándose en países como Bolivia, Brasil, Paraguay o Panamá. En países como Honduras o Panamá la baja dentro de los varones fue más significativa.
+
+Respecto a la industria, apreciamos cierto incremento dentro de los varones de países como Bolivia, Paraguay o México. Por el contrario, las mujeres de Argentina, República Dominicana, Costa Rica o Colombia redujeron sensiblemente su participación.
+
+Dentro del rubro de los servicios observamos un ascenso generalizado, destacándose Bolivia, Brasil, Cuba y República Dominicana.
+
+
+# Distribución dentro de cada género
+
+Realizamos una visualización alternativa que es ver la evolución de la distribución dentro de cada género para cada país
+
+```{r echo=FALSE, warning=FALSE}
+print(grafico_participacion_1)
+print(grafico_participacion_2)
+
+```
+
+Aquí podemos ver más nítidamente las estructuras de cada país. Tenemos países muy disímiles, podemos comparar a Argentina, donde el empleo agrario es prácticamente nulo con Haití, donde sigue siendo la ocupación más importante.
+
+También en Bolivia, Guatemala, Nicaragua o Paraguay el empleo rural sigue siendo muy significativo. 
+
+En cuanto a la industria, Argentina, Brasil, Chile y México siguen manteniendo una contribución alta de la mano de obra, sobre todo dentro de la población masculina.
+
+Por el rubro de los servicios encontramos una alta participación de las mujeres en casi todos los países. Se destacan Argentina, Costa Rica, Uruguay y Venezuela, por dar solo unos ejemplos. 
+
+Cabe señalar que dentro de la categoría de servicios se encuentra todo tipo de ocupación, desde quienes trabajan en empresas de tecnología hasta quienes se desempeñan dentro de trabajos mucho más precarios.
+

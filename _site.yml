@@ -1,0 +1,11 @@
+navbar:
+  title: Empleo y Género
+  left:
+  - text: Disponibilidad de Indicadores
+    href: grafico-mapa.html
+  - text: Tipo de Empleo y Género
+    href: grafico-tipoempleo.html
+output:
+  html_document:
+    theme: cerulean
+    highlight: tango

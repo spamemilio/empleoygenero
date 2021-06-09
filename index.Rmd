@@ -1,0 +1,14 @@
+---
+title: "Indicadores de Empleo y Género en Latinoamérica"
+---
+
+Descargamos el dataset de Empleo y Género basado en información del Banco Mundial que recoge diversos indicadores entre los años 1970 y 2018.
+
+Inicialmente realizamos una visualización mediante mapas de la región en la que mostramos la cantidad de indicadores disponibles en cada país para los años 1970, 1981, 1991, 2001 y 2011
+
+[Ver](grafico-mapa.html)
+
+En base a esa información luego generamos un nuevo set de visualizaciones analizando la distribución por tipo de empleo y género en los distintos países y en la región propiamente dicha.
+
+[Ver](grafico-tipoempleo.html)
+

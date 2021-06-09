@@ -1,0 +1,31 @@
+---
+title: "Mapa de Indicadores"
+output: 
+  html_document:
+    code_download: true
+    toc: true
+    toc_float: true
+---
+
+```{r carga, include=FALSE}
+source('analisis/analisis_dataset.R', encoding = 'UTF-8', echo=TRUE)
+source('analisis/grafico_mapa.R', encoding = 'UTF-8', echo=TRUE)
+```
+
+Si bien el dataset recopila información para los paises de Latinoamérica entre los años 1970 y 2018, en los primeros años la información relevada es casi nula, con la excepción de Uruguay 
+(`r cantidad_indicadores_por_anio_pais(1970,"Uruguay")$cantidad_indicadores `) en 1970).
+
+En cambio ya en 2018, la cantidad de indicadores ya se eleva a `r cantidad_indicadores_por_anio_pais(2018,NULL)[1]`. Por lo tanto la pregunta es a partir de qué año es que tiene sentido empezar a realizar un análisis.
+
+Por ese motivo es que generamos una visualización en forma de mapa seleccionando los años 1970, 1981, 1991, 2001 y 2011. En el mapa podemos ver que a medida que aumenta la cantidad de indicadores por país el color pasa de azul a amarillo.
+
+
+
+
+```{r}
+print(grafico_mapa_indicadores)
+```
+
+Como podemos apreciar, hay un salto significativo en la década de los '90, pasando de `r cantidad_indicadores_por_anio_pais(1981,NULL)[1]` indicadores en 1981 a `r cantidad_indicadores_por_anio_pais(1991,NULL)[1]` en 1991.
+
+**Es por esto que creemos conveniente partir de este año para hacer un análisis comparativo robusto**
