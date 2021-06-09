@@ -1,0 +1,7 @@
+install.packages("tidyverse")
+install.packages("bpa")
+install.packages("ggmap")
+install.packages("raster")
+install.packages("maptools")
+install.packages('rgeos', type="source")
+install.packages("rnaturalearth")
